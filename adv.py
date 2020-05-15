@@ -23,10 +23,12 @@ world.load_graph(room_graph)
 # Print an ASCII map
 # world.print_rooms()
 
+#random start
+# world.staring_room = random.choice(world.rooms)
+
 #starts at 0
 player = Player(world.starting_room)
-#starts at random
-# player = Player(random.choice(world.rooms))
+
 
 # Fill this out with directions to walk
 traversal_path = []
@@ -104,6 +106,13 @@ def recur(r):
 
 recur(starting_room)
 
+# best: 968 
+goal = 984
+while len(traversal_path) > goal:
+    player.current_room = world.starting_room
+    traversal_path = []
+    g={}
+    recur(player.current_room)
 
 # TRAVERSAL TEST - DO NOT MODIFY
 visited_rooms = set()
